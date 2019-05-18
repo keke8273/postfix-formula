@@ -25,6 +25,7 @@ postldap:
     - mode: 644
     - require:
       - pkg: postfix
+      - file: {{ postfix.config_path }}/ldap
     - watch_in:
       - service: postfix
     - template: jinja
