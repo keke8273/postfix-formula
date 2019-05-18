@@ -1,6 +1,6 @@
 {% from "postfix/map.jinja" import postfix with context %}
 include:
-  -postfix
+  - postfix
 
 {% set ldap_uri = salt['pillar.get']('postfix:ldap:server_host', False) %}
 
