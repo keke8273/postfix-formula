@@ -16,8 +16,8 @@
 
 {%- endfor -%}
 
-{%- set virtual_alias_domains = salt['pillar.get']('postfix:ldap:virtual_alias_domains', {}) -%}
-{%- for key,value in virtual_alias_domains.items() -%}
+{%- set virtual_uid_maps = salt['pillar.get']('postfix:ldap:virtual_uid_maps', {}) -%}
+{%- for key,value in virtual_uid_maps.items() -%}
 {%- if key not in exclude -%}
     {{ key }} = {{ value }}
 {% endif -%}

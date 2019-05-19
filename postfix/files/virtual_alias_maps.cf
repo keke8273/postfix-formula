@@ -22,3 +22,26 @@ query = SELECT {{ config.select_field|default('destination') }} FROM {{ config.t
 {{ set_parameter('select_field', 'goto') }}
 {{ set_parameter('where_field', 'address') }}
 {%- endif %}
+
+{%- if 'ldap' in salt['pillar.get']('postfix', '') %}
+{%- set exclude = ['virtual_alias_doamins',
+'virtual_alias_maps',
+'virtual_mailbox_maps',
+'virtual_uid_maps',
+'smtpd_sender_login_maps'] -%}
+{%- set config = salt['pillar.get']('postfix:ldap', {}) -%}
+{%- for key,value in config.items() -%}
+
+{%- if key not in exclude -%}
+    {{ key }} = {{ value }}
+{% endif -%}
+
+{%- endfor -%}
+
+{%- set virtual_alias_maps = salt['pillar.get']('postfix:ldap:virtual_alias_maps', {}) -%}
+{%- for key,value in virtual_alias_maps.items() -%}
+{%- if key not in exclude -%}
+    {{ key }} = {{ value }}
+{% endif -%}
+{%- endfor -%}
+{%- endif -%}
