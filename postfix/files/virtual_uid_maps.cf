@@ -1,6 +1,6 @@
 {%- if 'ldap' in salt['pillar.get']('postfix', '') %}
 
-{%- set exclude = ['virtual_alias_doamins',
+{%- set exclude = ['virtual_alias_domains',
 'virtual_alias_maps',
 'virtual_mailbox_maps',
 'virtual_uid_maps',
