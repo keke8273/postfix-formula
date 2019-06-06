@@ -5,6 +5,7 @@ Debian:
   policyd_spf_pkg: postfix-policyd-spf-python
   pcre_pkg: postfix-pcre
   mysql_pkg: postfix-mysql
+  sasl_pkg: libsasl2-modules
 
 FreeBSD:
   policyd_spf_pkg: py27-postfix-policyd-spf-python
@@ -13,6 +14,7 @@ FreeBSD:
   config_path: /usr/local/etc/postfix
   root_grp: wheel
   dovecot_deliver: /usr/local/libexec/dovecot/deliver
+  sasl_pkg: cyrus-sasl-plain
 
 Gentoo:
   package: mail-mta/postfix
@@ -24,3 +26,4 @@ Gentoo:
 
 RedHat:
   policyd_spf_pkg: pypolicyd-spf
+  sasl_pkg: cyrus-sasl-plain
